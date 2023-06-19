@@ -1,0 +1,64 @@
+from tkinter import *
+import random
+from tkinter import messagebox
+
+
+# def gstart():
+#     me = var.get()
+#     com = random.randrange(1,4)
+#     if com == me :
+#         messagebox.showinfo("result", "비김")
+#     elif(me == 1 and com ==3) or (me==2 and com == 1)or(me == 3 and com == 2):
+#         messagebox.showinfo("result", "이겼땅")
+#     else : 
+#         messagebox.showinfo("result", "짐")
+
+def prt(a) :
+    com = random.randrange(1,4)
+    label2.configure(imege=spr_photo[com])
+    me = var.get()
+    label1.config(image=spr_photo[me])
+    game(com,me)
+
+    def game(com,me) :
+        if com == me :
+            messagebox.showinfo("result", "비김")
+        elif (me == 1 and com == 3) or (me == 2 and com == 1)or(me == 3 and com == 2):
+            messagebox.showinfo("result", "이겼땅")
+        else :
+            messagebox.showinfo("result", "졌당")
+
+window = Tk()
+window.title("가위바위보 게임")
+window.geometry("340x700")
+window.resizable(width=False, height=False)
+spr_photo_name = ['photo_start', '짱', '깸', "뽀"]
+spr_photo = []
+
+for i in spr_photo_name:
+    iname ="./image/" + i + ".gif"
+    spr_photo.append(PhotoImage(file=iname))
+
+
+var=intVar()
+
+for j in range(1,4):
+    Radiobutton(window, text=spr_photo_name[j],variable=var, value=j,command=lambda:prt(j)).grid(row=j,column=0)
+
+    label1 = Label(window,image=spr_photo[0],anchor=W).grid(row=0,column=0)
+    label2 = Label(window,image=spr_photo[0],anchor=E).grid(row=0,column=1)
+
+# photo_ro = PhotoImage(file="./image/Mook.gif")
+# photo_pa = PhotoImage(file="./image/Zzie.gif")
+# photo_sc = PhotoImage(file="./image/Ppah.gif")
+`# photo_st = PhotoImage(file="./image/Mook.gif")
+
+# label1 = Label(window, image=photo_st,anchor  = W)
+# label1.grid(row=0,column=0)
+# var=IntVar()
+# scis = Radiobutton(window, text="가위", variable=var,value=1, command=gstart).grid(row=1, column=0)
+# rock = Radiobutton(window, text="바위", variable=var,value=2, command=gstart).grid(row=2, column=0)
+# pape = Radiobutton(window, text="보", variable=var,value=3, command=gstart).grid(row=3, column=0)
+
+window.mainloop()
+

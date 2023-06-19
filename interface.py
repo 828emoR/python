@@ -35,7 +35,7 @@ cup_sel3.pack()
 button1 = Button(window, text="주문", command=order_chk)
 button1.pack()
 
-Label.config(text=f"{drink_sel}, {cup_sel}")
+
 
 
 window.mainloop()
